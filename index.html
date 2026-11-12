@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="JSF FASHION WEAR - Premium clothing and lifestyle store.">
+  <title>JSF FASHION WEAR | Premium Clothing Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#"><span class="brand-mark">JSF</span><span>JSF <b>FASHION</b></span></a>
+  <nav><a href="#home">Home</a><a href="#products">Collection</a><a href="#about">About</a></nav>
+  <div class="header-actions">
+    <button class="outline-btn" id="adminOpen">Admin</button>
+    <button class="gold-btn" id="cartOpen">Cart <span id="cartCount">0</span></button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="eyebrow">NEW SEASON • NEW STYLE</p>
+    <h1>Wear Your<br><span>Confidence.</span></h1>
+    <p class="hero-copy">আধুনিক ডিজাইন, আরামদায়ক ফ্যাব্রিক এবং প্রিমিয়াম স্টাইল—আপনার প্রতিদিনের ফ্যাশন এখন এক জায়গায়।</p>
+    <a class="gold-btn shop-link" href="#products">EXPLORE COLLECTION</a>
+  </div>
+  <div class="hero-image"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1100" alt="Fashion collection"></div>
+</section>
+
+<main class="container" id="products">
+  <div class="section-heading"><div><p class="eyebrow">CURATED FOR YOU</p><h2>Our Collection</h2></div><p>Find your everyday signature look.</p></div>
+  <div class="toolbar">
+    <input id="searchInput" type="search" placeholder="পণ্য খুঁজুন...">
+    <select id="sortSelect"><option value="default">Sort: Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
+  </div>
+  <div class="filters" id="categoryFilters"></div>
+  <div class="product-grid" id="productGrid"></div>
+</main>
+
+<section class="about" id="about">
+  <p class="eyebrow">THE JSF PROMISE</p><h2>Style that feels like you.</h2>
+  <p>JSF FASHION WEAR-এ আমরা বিশ্বাস করি, ভালো ফ্যাশন মানে শুধু সুন্দর দেখানো নয়—নিজের স্টাইল ও আত্মবিশ্বাস প্রকাশ করা।</p>
+</section>
+
+<footer><a class="brand footer-brand" href="#"><span class="brand-mark">JSF</span><span>JSF <b>FASHION</b></span></a><p>Premium Fashion • Everyday Comfort</p><small>© <span id="year"></span> JSF FASHION WEAR. All rights reserved.</small></footer>
+
+<div class="overlay" id="cartOverlay">
+  <aside class="drawer">
+    <div class="drawer-head"><h2>Your Cart</h2><button class="close-btn" data-close="cartOverlay">✕</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total">Total: <strong id="cartTotal">৳0</strong></div>
+    <button class="gold-btn wide" id="checkoutOpen">PROCEED TO CHECKOUT</button>
+  </aside>
+</div>
+
+<div class="overlay" id="checkoutOverlay">
+  <section class="modal">
+    <div class="drawer-head"><h2>Checkout</h2><button class="close-btn" data-close="checkoutOverlay">✕</button></div>
+    <form id="checkoutForm" class="form">
+      <label>আপনার নাম<input name="customer" required placeholder="নাম লিখুন"></label>
+      <label>মোবাইল নম্বর<input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></label>
+      <label>সম্পূর্ণ ঠিকানা<textarea name="address" required placeholder="বাসা, এলাকা, জেলা"></textarea></label>
+      <p class="hint">এটি একটি ডেমো চেকআউট। অর্ডার সার্ভার বা অনলাইনে পাঠানো হবে না।</p>
+      <button class="gold-btn wide" type="submit">PLACE DEMO ORDER</button>
+    </form>
+  </section>
+</div>
+
+<div class="overlay" id="adminOverlay">
+  <section class="modal admin-modal">
+    <div class="drawer-head"><h2>JSF Admin Dashboard</h2><button class="close-btn" data-close="adminOverlay">✕</button></div>
+    <p class="hint">ডেমো অ্যাডমিন প্যানেল: এই ব্রাউজারের Local Storage-এ পণ্য সংরক্ষিত হবে। এটি নিরাপদ অনলাইন অ্যাডমিন লগইন নয়।</p>
+    <form id="adminLogin" class="form">
+      <label>Demo password<input id="adminPassword" type="password" placeholder="Enter demo password" required></label>
+      <button class="gold-btn wide" type="submit">LOGIN</button>
+    </form>
+    <div id="adminPanel" class="hidden">
+      <h3>Add New Product</h3>
+      <form id="addProductForm" class="form">
+        <label>Product name<input name="name" required></label>
+        <label>Category<select name="category"><option>T-Shirts</option><option>Shirts</option><option>Pants</option><option>Hoodies</option><option>Accessories</option></select></label>
+        <label>Price (৳)<input name="price" type="number" min="1" required></label>
+        <label>Image URL<input name="image" type="url" placeholder="https://..."></label>
+        <button class="gold-btn wide" type="submit">ADD PRODUCT</button>
+      </form>
+      <h3>Manage Products</h3><div id="adminProducts" class="admin-products"></div>
+      <button class="outline-btn" id="adminLogout">Logout</button>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
